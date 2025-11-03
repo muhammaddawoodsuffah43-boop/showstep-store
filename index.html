@@ -1,0 +1,183 @@
+﻿<!doctype html>
+<html lang="ur" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ShowStep Pro — Online Shoe Store</title>
+  <style>
+    :root{
+      --accent:#0b6efd;
+      --muted:#6b6b6b;
+      --card-bg:#fff;
+      --bg:#f4f6fb;
+      font-family: "Noto Nastaliq Urdu", "Segoe UI", Tahoma, sans-serif;
+    }
+    body{ margin:0; background:var(--bg); color:#111; }
+    header{
+      background:#111; color:white; padding:18px 16px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px;
+    }
+    .brand{ font-size:20px; font-weight:700; }
+    .tag{ font-size:13px; color:#cfcfcf }
+    .container{ max-width:1100px; margin:18px auto; padding:0 12px; }
+    .hero{
+      background:linear-gradient(90deg, rgba(11,110,253,0.08), rgba(11,110,253,0.02));
+      padding:18px; border-radius:12px; display:flex; gap:12px; align-items:center;
+      justify-content:space-between; flex-wrap:wrap;
+    }
+    .hero .left{ flex:1; min-width:240px }
+    .hero h1{ margin:0 0 6px 0; font-size:20px }
+    .hero p{ margin:0; color:var(--muted) }
+    .easybox{
+      background:#fff; padding:12px; border-radius:10px; box-shadow:0 6px 18px rgba(16,24,40,0.06);
+      display:flex; gap:10px; align-items:center;
+    }
+    .easybox strong{ font-size:18px; }
+    .copy-btn{
+      background:var(--accent); color:white; border:none; padding:8px 10px; border-radius:8px;
+      cursor:pointer; font-weight:600;
+    }
+
+    /* product grid */
+    .grid{ display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:16px }
+    .card{ background:var(--card-bg); padding:12px; border-radius:12px; box-shadow:0 6px 18px rgba(16,24,40,0.04); display:flex; flex-direction:column; gap:8px; }
+    .card img{ width:100%; height:180px; object-fit:cover; border-radius:8px; background:#e9eef9 }
+    .card h3{ margin:0; font-size:16px }
+    .price{ color:var(--muted); font-size:14px }
+    .btn-row{ display:flex; gap:8px; margin-top:auto }
+    .btn{
+      flex:1; padding:10px; border-radius:10px; font-weight:700; cursor:pointer; border:none;
+    }
+    .whatsapp{ background:#25D366; color:#fff; }
+    .details{ background:#eef2ff; color:var(--accent); }
+
+    footer{
+      margin-top:22px; padding:18px; text-align:center; color:var(--muted);
+      font-size:14px;
+    }
+
+    /* small screens */
+    @media (max-width:480px){
+      .hero{ padding:12px; gap:8px }
+      .card img{ height:150px }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <div class="brand">ShowStep Pro</div>
+      <div class="tag">Stylish & Comfortable Shoes – For Every Step You Take</div>
+    </div>
+    <div style="text-align:right">
+      <div style="font-size:13px; color:#cfcfcf">Contact / Order</div>
+      <div style="font-weight:700">Call / WhatsApp: <a href="https://wa.me/923167347055" style="color:#fff; text-decoration:none">0316-7347055</a></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" aria-label="hero">
+      <div class="left">
+        <h1>نئی کلیکشن — Best Sellers</h1>
+        <p>گھر بیٹھے آرڈر کریں — آسان ادائیگی EasyPaisa پر — ہم TCS کے ذریعے ڈلیور کریں گے</p>
+      </div>
+
+      <div class="easybox" aria-hidden="false">
+        <div>
+          <div style="font-size:13px; color:var(--muted)">EasyPaisa (پے کریں یہ نمبر):</div>
+          <div style="display:flex; gap:8px; align-items:center; margin-top:6px;">
+            <strong id="easynumber">03122235714</strong>
+            <button class="copy-btn" onclick="copyEasy()">Copy</button>
+          </div>
+          <div style="font-size:12px; color:var(--muted); margin-top:6px">ادائیگی کی تصدیق کے بعد ہم پیکیج بھجوانے شروع کریں گے</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- products -->
+    <section class="grid" aria-label="products">
+      <!-- Product 1 -->
+      <article class="card">
+        <img src="images/mens_sneakers.jpg" alt="Men's Sneakers — ShowStep">
+        <h3>Men's Sneakers</h3>
+        <div class="price">Price on Call</div>
+        <div class="btn-row">
+          <button class="btn whatsapp" onclick="orderWhatsApp('Men\\'s Sneakers')">Order Now</button>
+          <button class="btn details" onclick="showDetails('Men\\'s Sneakers')">View</button>
+        </div>
+      </article>
+
+      <!-- Product 2 -->
+      <article class="card">
+        <img src="images/womens_heels.jpg" alt="Women's Heels — ShowStep">
+        <h3>Women's Heels</h3>
+        <div class="price">Price on Call</div>
+        <div class="btn-row">
+          <button class="btn whatsapp" onclick="orderWhatsApp('Women\\'s Heels')">Order Now</button>
+          <button class="btn details" onclick="showDetails('Women\\'s Heels')">View</button>
+        </div>
+      </article>
+
+      <!-- Product 3 -->
+      <article class="card">
+        <img src="images/sports_shoes.jpg" alt="Sports Shoes — ShowStep">
+        <h3>Sports Shoes</h3>
+        <div class="price">Price on Call</div>
+        <div class="btn-row">
+          <button class="btn whatsapp" onclick="orderWhatsApp('Sports Shoes')">Order Now</button>
+          <button class="btn details" onclick="showDetails('Sports Shoes')">View</button>
+        </div>
+      </article>
+
+      <!-- Product 4 -->
+      <article class="card">
+        <img src="images/formal_shoes.jpg" alt="Formal Shoes — ShowStep">
+        <h3>Formal Shoes</h3>
+        <div class="price">Price on Call</div>
+        <div class="btn-row">
+          <button class="btn whatsapp" onclick="orderWhatsApp('Formal Shoes')">Order Now</button>
+          <button class="btn details" onclick="showDetails('Formal Shoes')">View</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- small info -->
+    <section style="margin-top:14px; background:#fff; padding:12px; border-radius:10px; box-shadow:0 6px 18px rgba(16,24,40,0.04)">
+      <h4 style="margin:0 0 6px 0">Delivery Information</h4>
+      <p style="margin:0; color:var(--muted)">Delivery via TCS after EasyPaisa payment confirmation. For faster processing, send your payment screenshot to our WhatsApp: <a href="https://wa.me/923167347055">0316-7347055</a></p>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2025 ShowStep-Store | All Rights Reserved — City: Karachi — EasyPaisa: <strong>03122235714</strong>
+  </footer>
+
+  <script>
+    function copyEasy(){
+      const num = document.getElementById('easynumber').innerText;
+      navigator.clipboard?.writeText(num).then(()=>{
+        alert('EasyPaisa number copied: ' + num);
+      }).catch(()=>{
+        // fallback
+        const el = document.createElement('input');
+        el.value = num; document.body.appendChild(el); el.select();
+        document.execCommand('copy'); document.body.removeChild(el);
+        alert('EasyPaisa number copied: ' + num);
+      });
+    }
+
+    function orderWhatsApp(product){
+      // WhatsApp number: 0316-7347055 -> international +92 316 7347055
+      const wa = '923167347055';
+      const msg = encodeURIComponent('Salam, main ' + product + ' order karna chahta/chahti hoon. Please confirm price, size aur delivery. — ShowStep');
+      window.open('https://wa.me/' + wa + '?text=' + msg, '_blank');
+    }
+
+    function showDetails(product){
+      alert(product + '\\n\\nPrice: Price on Call\\nSizes: 6 - 11\\nSend payment screenshot on WhatsApp after EasyPaisa transfer (03122235714).');
+    }
+  </script>
+</body>
+</html>
